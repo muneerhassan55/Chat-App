@@ -1,8 +1,20 @@
+import 'package:chat_app/model/chat_room_model.dart';
+import 'package:chat_app/model/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatRoomPage extends StatefulWidget {
-  const ChatRoomPage({super.key});
+  final UserModel targetuser;
+  final ChatRoomModel chatRoom;
+  final UserModel userModel;
+  final User firebaseUser;
+  ChatRoomPage(
+      {super.key,
+      required this.targetuser,
+      required this.chatRoom,
+      required this.userModel,
+      required this.firebaseUser});
 
   @override
   State<ChatRoomPage> createState() => _ChatRoomPageState();
@@ -13,14 +25,24 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        centerTitle: true,
-        title: Text(
-          'Chat room ',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+          iconTheme: IconThemeData(color: Colors.white),
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+          centerTitle: true,
+          title: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage:
+                    NetworkImage(widget.targetuser.profilepic.toString()),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                widget.targetuser.fullname.toString(),
+                style: TextStyle(color: Colors.white),
+              )
+            ],
+          )),
       body: Column(
         children: [
           Expanded(child: Container()),

@@ -1,4 +1,5 @@
 class MessageModel {
+  String? messageid;
   String? sender;
   String? text;
   bool? seen;
@@ -6,6 +7,7 @@ class MessageModel {
 
   // Constructor
   MessageModel({
+    this.messageid,
     this.sender,
     this.text,
     this.seen,
@@ -15,6 +17,7 @@ class MessageModel {
   // Method to convert MessageModel object to JSON
   Map<String, dynamic> toJson() {
     return {
+      'messageid': messageid,
       'sender': sender,
       'text': text,
       'seen': seen,
@@ -26,6 +29,7 @@ class MessageModel {
   // Method to create MessageModel object from JSON
   factory MessageModel.fromJson(Map<String, dynamic> json) {
     return MessageModel(
+      messageid: json['messageid'],
       sender: json['sender'],
       text: json['text'],
       seen: json['seen'],
