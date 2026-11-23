@@ -37,3 +37,7 @@ lib/
 1. Install Flutter (3.x) and run `flutter pub get`.
 2. Run `flutterfire configure` to connect your own Firebase project, then enable Email/Password sign-in, Firestore and Storage.
 3. Run `flutter run`.
+
+## License
+
+Released under the [MIT License](LICENSE).
